@@ -267,7 +267,7 @@ describe(dateFormat("YYYY-mm-dd HH:MM:SS",new Date()), function() {
             },
             "referrer": "http://192.168.0.100:8070/doc.html",
             "referrerPolicy": "no-referrer-when-downgrade",
-            "body": "{\n\"country\": \"+86\",\t\n\"password\": \"aac41e037079cdb631fbc6fd6d31dddf\",\n\"mobilephone\": \"18423232323\"\n}",
+            "body": "{\n\"country\": \"+86\",\t\n\"password\": \"85ea42562e733c094a193f469ad440d6\",\n\"mobilephone\": \"18423232323\"\n}",
             "method": "POST",
             "mode": "cors",
             "credentials": "include"
