@@ -17,7 +17,7 @@ console.log = function () {
     if (typeof arguments[i] == 'object') {
         arguments[i] = JSON.stringify(arguments[i])
     }
-    arguments[i] += '----' + line.replace("(", "").replace(")", "")
+    arguments[i] += '      ----' + line.replace("(", "").replace(")", "")
     log.apply(console, arguments)
 };
 
@@ -43,7 +43,8 @@ console.log = function () {
 
 
 describe(dateFormat("YYYY-mm-dd HH:MM:SS",new Date()), function() {
-    console.log("line number");
+
+    console.log("开始测试一个接口")
     it('异步请求应该包含000000', function() {
         return
 
@@ -64,7 +65,7 @@ describe(dateFormat("YYYY-mm-dd HH:MM:SS",new Date()), function() {
             "method": "GET",
             "mode": "cors",
             "credentials": "include"
-        }).then(response => {console.log(response.url);return response.text();}).then(response => {console.log(response);expect(response).to.have.string('000000')});
+        }).then(response => {console.log("url==>  "+response.url);return response.text();}).then(response => {console.log("response==>  "+response);expect(response).to.have.string('000000')});
 
 
     });
