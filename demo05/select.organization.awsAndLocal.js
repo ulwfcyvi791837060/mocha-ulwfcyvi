@@ -2,9 +2,28 @@
 var fetch = require('node-fetch');
 var expect = require('chai').expect;
 
+var getStackTrace = function () {
+    var obj = {};
+    Error.captureStackTrace(obj, getStackTrace);
+    return obj.stack;
+};
+var log = console.log;
+console.log = function () {
+    var stack = getStackTrace() || ""
+    var matchResult = stack.match(/\(.*?\)/g) || []
+    var line = matchResult[1] || ""
+    for (var i in arguments) {
+    }
+    if (typeof arguments[i] == 'object') {
+        arguments[i] = JSON.stringify(arguments[i])
+    }
+    arguments[i] += '----' + line.replace("(", "").replace(")", "")
+    log.apply(console, arguments)
+};
+
 //mocha -t 100000 ./demo05/promise.aws.js
 //测试命令如下
-// mocha select.awsAndLocal.js
+// mocha select.organization.awsAndLocal.js
 
 //iphone7 uuid  c59cacad1fc6b660ddfb2ab892935dbdb11215b8
 //app下载地址 aws http://fir.hahamall.cn/gridlink
@@ -24,6 +43,7 @@ var expect = require('chai').expect;
 
 
 describe(dateFormat("YYYY-mm-dd HH:MM:SS",new Date()), function() {
+    console.log("line number");
     it('异步请求应该包含000000', function() {
         return
 
@@ -69,7 +89,6 @@ function dateFormat(fmt, date) {
   };
   return fmt;
 }
-
 
 
 
